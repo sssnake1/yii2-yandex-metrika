@@ -1,15 +1,15 @@
 <?php
 
-namespace mitrm;
+namespace Mitrm\yii\extensions;
 
 use Yii;
 use yii\base\Object;
 
-class Metrica extends Object
+class YandexApi extends Object
 {
-    private $id = '';
-    private $CallbackUrl;
-	private $token = '';
+    public $id = '';
+    public $CallbackUrl;
+	public $token = '';
 	
 	const HOST = "http://api-metrika.yandex.ru/";
 	const GET_TOKEN = 'auth/get_token';
@@ -23,7 +23,8 @@ class Metrica extends Object
 	
 	public function getStat($id, $goal_id)
 	{
-		$url = self::HOST . '/';
+		$url = self::HOST . '/stat/traffic/summary.json?id=22053997&goal_id=2797094&date1=20141112&date2=20141112&oauth_token='.$this -> token;
+        echo $url;
 		return $this->curl( $url );
 	}
 	
@@ -34,14 +35,17 @@ class Metrica extends Object
 		return $this->curl( $url );
 	}
 	
-	private function curl( $url, $params = array() )
+	private function curl( $url, $params = [] )
 	{
-		$ch = curl_init( $url );
-		$options = array(
+		$ch = curl_init();
+		$options = [
 			CURLOPT_RETURNTRANSFER => 1,
 			CURLOPT_TIMEOUT => 30,
-			CURLOPT_POSTFIELDS => $params
-		);
+		];
+        if(!empty($params))
+            $options[CURLOPT_POSTFIELDS] = $params;
+        
+        curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt_array( $ch, $options );
 		$result = curl_exec( $ch );
 		curl_close( $ch );
