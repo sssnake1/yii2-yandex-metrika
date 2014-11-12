@@ -23,7 +23,7 @@ class Metrika extends Object
 	
 	public function getStat($id, $goal_id)
 	{
-		$url = self::HOST . '/stat/traffic/summary.json?id=22053997&goal_id=2797094&date1=20141112&date2=20141112&oauth_token='.$yhis -> token;
+		$url = self::HOST . '/stat/traffic/summary.json?id=22053997&goal_id=2797094&date1=20141112&date2=20141112&oauth_token='.$this -> token;
         echo $url;
 		return $this->curl( $url );
 	}
