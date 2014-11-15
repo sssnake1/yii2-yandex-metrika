@@ -1,7 +1,6 @@
 <?php
 namespace metrika;
 
-
 use Yii;
 use yii\base\Object;
 
@@ -44,7 +43,6 @@ class YandexMetrika extends Object
 		}
 		return $this->curl( $url );
 	}
-	
 	
 	private function authGetToken()
 	{
