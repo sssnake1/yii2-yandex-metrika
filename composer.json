@@ -19,7 +19,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"metrika\\": ""
+			"Mitrm\\yii\\extensions\\": ""
 		}
 	},
 	"minimum-stability": "stable"
