@@ -1,5 +1,5 @@
 <?php
-namespace metrika;
+namespace mitrm\yii\extensions;
 
 use Yii;
 use yii\base\Object;
